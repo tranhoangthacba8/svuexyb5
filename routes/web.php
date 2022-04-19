@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaterkitController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,13 +30,17 @@ Route::get('layouts/blank', [StaterkitController::class, 'layout_blank'])->name(
 // locale Route
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('testLogin',function (){
-   return view('authen.loginForm');
+Route::get('demoLogin',function (){
+   return view('login');
 });
+
+Route::get('login',[LoginController::class,'login'])->name('login');
+Route::get('register',[RegisterController::class,'register'])->name('register');
+Route::post('submitRegister',[RegisterController::class,'submitRegister'])->name('add-register');

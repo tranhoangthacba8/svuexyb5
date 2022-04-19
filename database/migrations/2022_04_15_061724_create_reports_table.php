@@ -21,6 +21,7 @@ class CreateReportsTable extends Migration
             $table->string('detail')->nullable();
             $table->dateTime('date');
             $table->integer('userId');
+            $table->integer('positionId');
             $table->timestamps();
         });
     }
