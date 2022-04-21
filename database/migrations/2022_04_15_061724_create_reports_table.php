@@ -16,7 +16,7 @@ class CreateReportsTable extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('workingType')->default(1);
-            $table->dateTime('workingTime');
+            $table->integer('workingTime');
             $table->integer('projectId');
             $table->string('detail')->nullable();
             $table->dateTime('date');
