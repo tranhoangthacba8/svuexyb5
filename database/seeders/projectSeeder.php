@@ -17,8 +17,11 @@ class projectSeeder extends Seeder
     {
         foreach (range(1,5) as $value){
             DB::table('projects')->insert([
-               ['name' => Str::random(10),'detail' => Str::random(50),'revenue' => 10000000]
-            ]);
+               [
+                   'name' => Str::random(10),
+                   'detail' => Str::random(50),
+                   'revenue' => 10000000]
+               ]);
         }
     }
 }

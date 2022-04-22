@@ -19,9 +19,16 @@ class userSeeder extends Seeder
         $faker = Faker::create();
         foreach (range(1,20) as $value){
             DB::table('users')->insert([
-                ['name' => Str::random(10),'email' => Str::random(10).'@gmail.com','password' => bcrypt('12345678'),
-                    'gender' => rand(1,2),'birthday' => '2022-01-02', 'tel' => $faker->phoneNumber,
-                    'address' => $faker->address,'roleId' => rand(1,5)]
+                [
+                    'name' => Str::random(10),
+                    'email' => Str::random(10).'@gmail.com',
+                    'password' => bcrypt('12345678'),
+                    'gender' => rand(1,2),
+                    'birthday' => '2022-01-02',
+                    'tel' => $faker->phoneNumber,
+                    'address' => $faker->address,
+                    'roleId' => rand(1,3)
+                ]
             ]);
         }
 

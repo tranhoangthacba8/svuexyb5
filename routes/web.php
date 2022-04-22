@@ -5,6 +5,7 @@ use App\Http\Controllers\StaterkitController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use \App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,16 +33,18 @@ Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//
+//
+//
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::get('login',[LoginController::class,'login'])->name('login');
 Route::get('register',[RegisterController::class,'register'])->name('register');
 Route::post('submitRegister',[RegisterController::class,'submitRegister'])->name('add-register');
+Route::post('logout',[LogoutController::class,'logout'])->name('logout');
 Route::get('testFontEnd',function (){
    return view('content.employee.report');
 });
+Route::post('login',[LoginController::class,'submitLogin'])->name('submitLogin');

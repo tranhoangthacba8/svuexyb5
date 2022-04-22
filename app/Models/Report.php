@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Report extends Model
 {
     use HasFactory;
+
     public function User(){
         return $this->belongsTo(User::class,'userId','id');
     }
