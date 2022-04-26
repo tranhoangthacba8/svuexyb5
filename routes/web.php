@@ -44,7 +44,14 @@ Route::get('login',[LoginController::class,'login'])->name('login');
 Route::get('register',[RegisterController::class,'register'])->name('register');
 Route::post('submitRegister',[RegisterController::class,'submitRegister'])->name('add-register');
 Route::post('logout',[LogoutController::class,'logout'])->name('logout');
+Route::post('login',[LoginController::class,'submitLogin'])->name('submitLogin');
 Route::get('testFontEnd',function (){
    return view('content.employee.report');
 });
-Route::post('login',[LoginController::class,'submitLogin'])->name('submitLogin');
+Route::get('testFontEnd2',function (){
+    return view('content.employee.createReport');
+});
+Route::get('testFontEnd3',function (){
+    return view('content.manager.managerProject.createProject');
+});
+

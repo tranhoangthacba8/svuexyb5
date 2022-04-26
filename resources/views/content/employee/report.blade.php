@@ -19,16 +19,16 @@
              </thead>
              <tbody>
                 <tr>
-                    <th>other</th>
-                    <th>developer</th>
-                    <th>8</th>
-                    <th>20/11/2021</th>
-                    <th>remote</th>
-                    <th>I want to work offline</th>
-                    <th>
+                    <td>other</td>
+                    <td>developer</td>
+                    <td>8</td>
+                    <td>20/11/2021</td>
+                    <td>remote</td>
+                    <td>I want to work offline</td>
+                    <td>
                         <button class="btn btn-primary">Edit</button>
                         <button class="btn btn-danger">delete</button>
-                    </th>
+                    </td>
                 </tr>
              </tbody>
          </table>

@@ -12,4 +12,7 @@ class Project extends Model
     public function Reports(){
         return $this->hasMany(Report::class,'projectId','id');
     }
+    public function ProjectUsers(){
+        return $this->hasMany(ProjectUser::class,'projectId','id');
+    }
 }

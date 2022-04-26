@@ -50,4 +50,7 @@ class User extends Authenticatable
     public function Reports(){
         return $this->hasMany(Report::class,'userId','id');
     }
+    public function ProjectUsers(){
+        return $this->hasMany(ProjectUser::class,'userId','id');
+    }
 }
