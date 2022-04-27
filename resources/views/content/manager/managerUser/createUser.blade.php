@@ -38,7 +38,7 @@
             </div>
             <div class="form-group" style="margin-bottom: 10px">
                 <label for="roleName">role name:</label>
-                <select name="roleName" id="roleName" class="form-select">
+                <select name="role" id="roleName" class="form-select">
                     <option>Employee</option>
                 </select>
             </div>
