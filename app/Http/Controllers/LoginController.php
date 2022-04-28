@@ -22,6 +22,7 @@ class LoginController extends Controller
         ])) {
             $user = User::where('email', $username)->first();
             Auth::login($user);
+
             return redirect()->route('home');
         }
     }

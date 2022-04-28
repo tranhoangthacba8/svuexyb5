@@ -24,7 +24,7 @@
             </div>
             <div class="form-group" style="margin-bottom: 10px">
                 <label for="workingType">list member</label>
-                <select name="listMember" id="listMember" multiple class="form-select">
+                <select name="listMember[]" id="listMember" multiple class="form-select">
                     <option>tran viet hoang</option>
                     <option>phan phi hung</option>
                 </select>

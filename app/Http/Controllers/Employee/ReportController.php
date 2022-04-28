@@ -14,15 +14,18 @@ class ReportController extends Controller
 {
     public function getReportAll($userId){
         $reports = DB::table('reports')
-            ->where('userId',$userId)->get();
+            ->where('userId',$userId)
+            ->get();
 
-        return view('content.employee.report',compact('reports','userId'));
+        return view('content.employee.report',
+            compact('reports','userId'));
     }
     public function add($userId){
         $projects = Project::all();
         $positions = Position::all();
 
-        return view('content.employee.createReport',compact('projects','userId','positions'));
+        return view('content.employee.createReport',
+            compact('projects','userId','positions'));
     }
     public function store(Request $request,$userId){
          $projectId = $request->input('projectName');
@@ -49,7 +52,8 @@ class ReportController extends Controller
         $positions = Position::all();
         $report = Report::find($id);
 
-        return view('content.employee.editReport',compact('projects','userId','positions','report'));
+        return view('content.employee.editReport',
+            compact('projects','userId','positions','report'));
     }
     public function update($userId, Request $request, $id){
         $report = DB::table('reports')->where('id',$id)->first();
