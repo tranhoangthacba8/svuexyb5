@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\DB;
 class ReportController extends Controller
 {
     public function getReportAll($userId){
-        $reports = DB::table('reports')
-            ->where('userId',$userId)
+        $reports = Report::where('userId',$userId)
             ->get();
 
         return view('content.employee.report',
@@ -23,9 +22,10 @@ class ReportController extends Controller
     public function add($userId){
         $projects = Project::all();
         $positions = Position::all();
+        $reports = Report::all();
 
         return view('content.employee.createReport',
-            compact('projects','userId','positions'));
+            compact('projects','userId','positions','reports'));
     }
     public function store(Request $request,$userId){
          $projectId = $request->input('projectName');
@@ -45,7 +45,7 @@ class ReportController extends Controller
          $report->userId = $userId;
          $report->save();
 
-         return redirect()->route();
+         return redirect()->route('report.index');
     }
     public function edit($userId, $id){
         $projects = Project::all();
@@ -74,12 +74,12 @@ class ReportController extends Controller
         $report->userId = $userId;
         $report->save();
 
-        return redirect()->route();
+        return redirect()->route('report.index');
     }
     public function delete($id){
         $report = Report::find($id);
         $report->delete();
 
-        return redirect()->route();
+        return redirect()->route('report.index');
     }
 }

@@ -4,7 +4,7 @@
 
 @section('content')
    <div class="container">
-         <a href="#" class="btn btn-success" style="margin-bottom: 10px">create report</a>
+         <a href="{{route('report.create',$userId)}}" class="btn btn-success" style="margin-bottom: 10px">create report</a>
          <table class="table">
              <thead>
                 <tr>
@@ -18,19 +18,35 @@
                 </tr>
              </thead>
              <tbody>
+                @foreach($reports as $report)
                 <tr>
-                    <td>other</td>
-                    <td>developer</td>
-                    <td>8</td>
-                    <td>20/11/2021</td>
-                    <td>remote</td>
-                    <td>I want to work offline</td>
+                    <td>{{$report->Project->name}}</td>
+                    <td>{{$report->Position->type}}</td>
+                    <td>{{$report->workingTime}}</td>
+                    <td>{{$report->date}}</td>
+                    <td>{{$report->workingType}}</td>
+                    <td>{{$report->detail}}</td>
                     <td>
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-danger">delete</button>
+                        <a href="editReport/{{$userId}}/{{$report->id}}" class="btn btn-primary" style="margin-bottom: 10px">Edit</a>
+                        <form class="frm-delete" action="{{route('report.delete',$report->id)}}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-danger btn-delete" type="button">delete</button>
+                        </form>
                     </td>
                 </tr>
+                @endforeach
              </tbody>
          </table>
    </div>
+   <script>
+       $(document).ready(function () {
+           $('.btn-delete').click(function () {
+               let isDelete = confirm('Do you want to delete this report?');
+               if (isDelete) {
+                   $(this).parents('form').submit();
+               }
+           });
+       })
+   </script>
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use \App\Http\Controllers\LogoutController;
+use \App\Http\Controllers\Employee\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,7 @@ Route::get('register',[RegisterController::class,'register'])->name('register');
 Route::post('submitRegister',[RegisterController::class,'submitRegister'])->name('add-register');
 Route::post('logout',[LogoutController::class,'logout'])->name('logout');
 Route::post('login',[LoginController::class,'submitLogin'])->name('submitLogin');
+
 Route::get('testFontEnd',function (){
    return view('content.employee.report');
 });
@@ -55,3 +57,9 @@ Route::get('testFontEnd3',function (){
     return view('content.manager.managerProject.createProject');
 });
 
+Route::get('report/{userId}',[ReportController::class,'getReportAll'])->name('report.index');
+Route::get('createReport/{userId}',[ReportController::class,'add'])->name('report.create');
+Route::post('storeReport/{userId}',[ReportController::class,'store'])->name('report.store');
+Route::get('editReport/{userId}/{id}',[ReportController::class,'edit'])->name('report.edit');
+Route::put('updateReport/{userId}/{id}',[ReportController::class,'update'])->name('report.update');
+Route::delete('deleteReport/{id}',[ReportController::class,'delete'])->name('report.delete');
