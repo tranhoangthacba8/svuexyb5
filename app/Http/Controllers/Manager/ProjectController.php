@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\ProjectUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,13 +13,12 @@ class ProjectController extends Controller
 {
     public function index(){
         $projects = DB::table('projects')
-            ->join('project_users','projects.id','=','project_users.projectId')
-            ->join('users','project_users.userId','=','users.id')
-            ->select('projects.*','users.name')
+            ->select('projects.*')
             ->get();
+        $projectUsers = ProjectUser::all();
 
         return view('content.manager.managerProject.index'
-        ,compact($projects));
+        ,compact('projects','projectUsers'));
     }
     public function add(){
         $users = User::all();
@@ -41,14 +41,16 @@ class ProjectController extends Controller
         $project->ProjectUsers()->sync($listMemberId);
         $project->save();
 
-        return redirect()->route();
+        return redirect()->route('managerProject.index');
     }
     public function edit($id){
         $users = User::all();
         $project = Project::find($id);
+        $projectUsers = ProjectUser::all();
+        $userIds = $projectUsers->User->pluck('id')->toArray();
 
         return view('content.manager.managerProject.editProject',
-            compact('users','project'));
+            compact('users','project','projectUsers','userIds'));
     }
     public function update($id, Request $request){
         $name = $request->input('name');
@@ -65,7 +67,7 @@ class ProjectController extends Controller
         $project->ProjectUsers()->sync($listMemberId);
         $project->save();
 
-        return redirect()->route();
+        return redirect()->route('managerProject.index');
     }
     public function delete($id){
         $project = Project::find($id);
@@ -78,6 +80,6 @@ class ProjectController extends Controller
             }
         }
 
-        return redirect()->route();
+        return redirect()->route('managerProject.index');
     }
 }

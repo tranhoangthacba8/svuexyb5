@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <a href="#" class="btn btn-success" style="margin-bottom: 10px">create report</a>
+        <a href="{{route('managerUser.create')}}" class="btn btn-success" style="margin-bottom: 10px">create report</a>
         <table class="table">
             <thead>
                  <tr>
@@ -16,17 +16,33 @@
                  </tr>
             </thead>
             <tbody>
+                 @foreach($users as $user)
                  <tr>
-                     <td>tran viet hoang</td>
-                     <th>hoangtv@beetsoft.com.vn</th>
-                     <td>0326915328</td>
-                     <td>Yen Bai</td>
+                     <td>{{$user->name}}</td>
+                     <th>{{$user->email}}</th>
+                     <td>{{$user->tel}}</td>
+                     <td>{{$user->address}}</td>
                      <td>
-                         <button class="btn btn-primary">Edit</button>
-                         <button class="btn btn-danger">delete</button>
+                         <a href="{{route('managerUser.edit',$user->id)}}" class="btn btn-primary">Edit</a>
+                         <form class="frm-delete" action="{{route('managerUser.delete',$user->id)}}" method="post">
+                             @csrf
+                             @method('delete')
+                             <button class="btn btn-danger btn-delete" type="button">delete</button>
+                         </form>
                      </td>
                  </tr>
+                 @endforeach
             </tbody>
         </table>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('.btn-delete').click(function () {
+                let isDelete = confirm('Do you want to delete this User?');
+                if (isDelete) {
+                    $(this).parents('form').submit();
+                }
+            });
+        })
+    </script>
 @endsection

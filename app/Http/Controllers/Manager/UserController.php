@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProjectUser;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,10 @@ class UserController extends Controller
             compact('users'));
     }
     public function add(){
-        return view('content.manager.managerUser.createUser');
+        $roles = Role::all();
+
+        return view('content.manager.managerUser.createUser',
+            compact('roles'));
     }
     public function store(Request $request){
         $name = $request->input('name');
@@ -35,7 +39,7 @@ class UserController extends Controller
         $user->roleId = $role;
         $user->save();
 
-        return redirect()->route();
+        return redirect()->route('managerUser.index');
     }
     public function edit($id){
         $user = User::find($id);
@@ -61,7 +65,7 @@ class UserController extends Controller
         $user->roleId = $role;
         $user->save();
 
-        return redirect()->route();
+        return redirect()->route('managerUser.index');
     }
     public function delete($id){
         $user = User::find($id);
@@ -74,6 +78,6 @@ class UserController extends Controller
             }
         }
 
-        return redirect()->route();
+        return redirect()->route('managerUser.index');
     }
 }

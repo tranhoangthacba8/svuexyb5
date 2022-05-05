@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <a href="#" class="btn btn-success" style="margin-bottom: 10px">create project</a>
+    <a href="{{route('managerProject.create')}}" class="btn btn-success" style="margin-bottom: 10px">create project</a>
     <table class="table">
         <thead>
             <tr>
@@ -17,23 +17,42 @@
             </tr>
         </thead>
         <tbody>
+             @foreach($projects as $project)
              <tr>
-                 <td>the first project</td>
-                 <td>cong gang len</td>
-                 <td>6 month</td>
-                 <td>10000 $</td>
+                 <td>{{$project->name}}</td>
+                 <td>{{$project->detail}}</td>
+                 <td>{{$project->duration}} :month</td>
+                 <td>{{$project->revenue}} $</td>
                  <td>
-                     <ol>
-                         <li>tran viet hoang</li>
-                         <li>phan phi hung</li>
-                     </ol>
+                     @foreach($projectUsers as $projectUser)
+                        @if($projectUser->projectId == $project->id)
+                           <ul>
+                               <li>{{$projectUser->User->name}}</li>
+                           </ul>
+                         @endif
+                     @endforeach
                  </td>
                  <td>
-                     <button class="btn btn-primary">Edit</button>
-                     <button class="btn btn-danger">delete</button>
+                     <a href="{{route('managerProject.edit', $project->id)}}" class="btn btn-primary">Edit</a>
+                     <form class="frm-delete" action="{{route('managerProject.delete',$project->id)}}" method="post">
+                         @csrf
+                         @method('delete')
+                         <button class="btn btn-danger btn-delete" type="button">delete</button>
+                     </form>
                  </td>
              </tr>
+             @endforeach
         </tbody>
     </table>
 </div>
+<script>
+    $(document).ready(function () {
+        $('.btn-delete').click(function () {
+            let isDelete = confirm('Do you want to delete this Project?');
+            if (isDelete) {
+                $(this).parents('form').submit();
+            }
+        });
+    })
+</script>
 @endsection

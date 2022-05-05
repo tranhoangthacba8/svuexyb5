@@ -12,4 +12,7 @@ class Position extends Model
     public function Reports(){
         return $this->hasMany(Report::class,'positionId','id');
     }
+    public function ProjectUsers(){
+        return $this->hasMany(ProjectUser::class,'positionId','id');
+    }
 }

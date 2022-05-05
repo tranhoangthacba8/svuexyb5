@@ -5,7 +5,8 @@
 @section('content')
 <div class="container">
     <h2>Create project</h2>
-    <form action="" method="">
+    <form action="{{route('managerProject.store')}}" method="post">
+        @csrf
         <div class="form-group" style="margin-bottom: 10px">
             <label for="name">name</label>
             <input name="name" type="text" class="form-control" value="" id="name" placeholder="Enter name">
@@ -27,10 +28,14 @@
         </div>
 
         <div class="form-group" style="margin-bottom: 10px">
+            @php
+               $inputMems = old('listMember',[]);
+            @endphp
             <label for="listMember">list member</label>
             <select name="listMember[]" id="listMember" multiple class="form-select">
-                <option>tran viet hoang</option>
-                <option>phan phi hung</option>
+                @foreach($users as $user)
+                <option>{{$user->name}}</option>
+                @endforeach
             </select>
         </div>
 
