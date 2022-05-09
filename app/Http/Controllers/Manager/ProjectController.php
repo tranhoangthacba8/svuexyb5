@@ -63,7 +63,6 @@ class ProjectController extends Controller
         $duration = $request->input('duration');
         $revenue = $request->input('revenue');
 
-
         $project = Project::find($id);
         $project->name = $name;
         $project->detail = $detail;
