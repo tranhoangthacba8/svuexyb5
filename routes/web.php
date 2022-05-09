@@ -57,23 +57,23 @@ Route::get('editReport/{userId}/{id}',[ReportController::class,'edit'])->name('r
 Route::put('updateReport/{userId}/{id}',[ReportController::class,'update'])->name('report.update');
 Route::delete('deleteReport/{id}',[ReportController::class,'delete'])->name('report.delete');
 
-Route::get('managerUser',[UserController::class,'index'])->name('managerUser.index');
-Route::get('CreateManagerUser',[UserController::class,'add'])->name('managerUser.create');
-Route::post('storeManagerUser',[UserController::class,'store'])->name('managerUser.store');
-Route::get('editManagerUser/{id}',[UserController::class,'edit'])->name('managerUser.edit');
-Route::put('updateManagerUser/{id}',[UserController::class,'update'])->name('managerUser.update');
-Route::delete('deleteManagerUser/{id}',[UserController::class,'delete'])->name('managerUser.delete');
+Route::get('managerUser',[UserController::class,'index'])->name('user.index');
+Route::get('CreateManagerUser',[UserController::class,'add'])->name('user.create');
+Route::post('storeManagerUser',[UserController::class,'store'])->name('user.store');
+Route::get('editManagerUser/{id}',[UserController::class,'edit'])->name('user.edit');
+Route::put('updateManagerUser/{id}',[UserController::class,'update'])->name('user.update');
+Route::delete('deleteManagerUser/{id}',[UserController::class,'delete'])->name('user.delete');
 
-Route::get('managerProject',[ProjectController::class,'index'])->name('managerProject.index');
-Route::get('createManagerProject',[ProjectController::class,'add'])->name('managerProject.create');
-Route::post('storeManagerProject',[ProjectController::class,'store'])->name('managerProject.store');
-Route::get('editManagerProject/{id}',[ProjectController::class,'edit'])->name('managerProject.edit');
-Route::put('updateManagerProject/{id}',[ProjectController::class,'update'])->name('managerProject.update');
-Route::delete('deleteManagerProject/{id}',[ProjectController::class,'delete'])->name('managerProject.delete');
+Route::get('managerProject',[ProjectController::class,'index'])->name('project.index');
+Route::get('createManagerProject',[ProjectController::class,'add'])->name('project.create');
+Route::post('storeManagerProject',[ProjectController::class,'store'])->name('project.store');
+Route::get('editManagerProject/{id}',[ProjectController::class,'edit'])->name('project.edit');
+Route::put('updateManagerProject/{id}',[ProjectController::class,'update'])->name('project.update');
+Route::delete('deleteManagerProject/{id}',[ProjectController::class,'delete'])->name('project.delete');
 
-Route::get('projectRole',[ProjectRoleController::class,'index'])->name('managerProjectRole.index');
-Route::get('createProjectRole',[ProjectRoleController::class,'add'])->name('managerProjectRole.create');
-Route::post('storeProjectRole',[ProjectRoleController::class,'store'])->name('managerProjectRole.store');
-Route::get('editProjectRole/{id}',[ProjectRoleController::class,'edit'])->name('managerProjectRole.edit');
-Route::put('updateProjectRole/{id}',[ProjectRoleController::class,'update'])->name('managerProjectRole.update');
-Route::delete('deleteProjectRole/{id}',[ProjectRoleController::class,'delete'])->name('managerProjectRole.delete');
+Route::get('projectRole',[ProjectRoleController::class,'index'])->name('projectRole.index');
+Route::get('createProjectRole',[ProjectRoleController::class,'add'])->name('projectRole.create');
+Route::post('storeProjectRole',[ProjectRoleController::class,'store'])->name('projectRole.store');
+Route::get('editProjectRole/{id}',[ProjectRoleController::class,'edit'])->name('projectRole.edit');
+Route::put('updateProjectRole/{id}',[ProjectRoleController::class,'update'])->name('projectRole.update');
+Route::delete('deleteProjectRole/{id}',[ProjectRoleController::class,'delete'])->name('projectRole.delete');

@@ -14,7 +14,11 @@
                 <option {{ old('projectId') == $project->id ? 'selected' : '' }} value="{{ $project->id }}">{{$project->name}}</option>
                 @endforeach
             </select>
+            @error('projectName')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
+
         <div class="form-group" style="margin-bottom: 10px">
             <label for="positionName">Position</label>
             <select name="positionName" id="positionName" class="form-select">
@@ -22,15 +26,27 @@
                 <option {{ old('positionId') == $position->id ? 'selected' : '' }} value="{{ $position->id }}">{{$position->name}}</option>
                 @endforeach
             </select>
+            @error('positionName')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
+
         <div class="form-group" style="margin-bottom: 10px">
             <label for="workingTime">working time</label>
             <input name="workingTime" type="text" class="form-control" value="{{old('workingTime')}}" id="workingTime" placeholder="Enter time">
+            @error('workingTime')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
+
         <div class="form-group" style="margin-bottom: 10px">
             <label for="date">date</label>
             <input name="date" type="date" class="form-control" value="{{old('date')}}" id="date" placeholder="Enter date">
+            @error('date')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
+
         <div class="form-group" style="margin-bottom: 10px">
             <label for="workingType">working type</label>
             <select name="workingType" id="workingType" class="form-select">
@@ -39,11 +55,19 @@
                 <option {{old('workingType') == 3 ? 'selected' : ''}} value="3">Onsite</option>
                 <option {{old('workingType') == 4 ? 'selected' : ''}} value="4">Off</option>
             </select>
+            @error('workingType')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
+
         <div class="form-group" style="margin-bottom: 10px">
             <label for="detail">detail</label>
             <textarea class="form-control" rows="5" id="detail" name="detail">{{old('detail')}}</textarea>
+            @error('detail')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
+
         <button type="submit" class="btn btn-success">Save</button>
     </form>
 </div>

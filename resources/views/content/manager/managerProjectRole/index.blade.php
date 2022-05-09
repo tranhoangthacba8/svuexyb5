@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <a href="{{route('managerProjectRole.create')}}" class="btn btn-success" style="margin-bottom: 10px">create</a>
+        <a href="{{route('projectRole.create')}}" class="btn btn-success" style="margin-bottom: 10px">create</a>
         <table class="table">
             <thead>
                 <tr>
@@ -21,8 +21,8 @@
                     <td>{{$projectRole->Project->name}}</td>
                     <td>{{$projectRole->Position->type}}</td>
                     <td>
-                        <a href="{{route('managerProjectRole.edit',$projectRole->id)}}" class="btn btn-primary">Edit</a>
-                        <form class="frm-delete" action="{{route('managerProjectRole.delete',$projectRole->id)}}" method="post">
+                        <a href="{{route('projectRole.edit',$projectRole->id)}}" class="btn btn-primary">Edit</a>
+                        <form class="frm-delete" action="{{route('projectRole.delete',$projectRole->id)}}" method="post">
                             @csrf
                             @method('delete')
                             <button class="btn btn-danger btn-delete" type="button">delete</button>
@@ -33,4 +33,14 @@
             </tbody>
         </table>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('.btn-delete').click(function () {
+                let isDelete = confirm('Do you want to delete this Project role?');
+                if (isDelete) {
+                    $(this).parents('form').submit();
+                }
+            });
+        })
+    </script>
 @endsection

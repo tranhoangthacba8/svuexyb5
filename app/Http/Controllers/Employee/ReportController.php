@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Report\createRequest;
+use App\Http\Requests\Report\editRequest;
 use App\Models\Position;
 use App\Models\Project;
 use App\Models\Report;
@@ -24,10 +26,12 @@ class ReportController extends Controller
         $positions = Position::all();
         $reports = Report::all();
 
-        return view('content.employee.createReport',
-            compact('projects','userId','positions','reports'));
+        return view(
+            'content.employee.createReport',
+            compact('projects','userId','positions','reports')
+        );
     }
-    public function store(Request $request,$userId){
+    public function store(createRequest $request, $userId){
          $projectId = $request->input('projectName');
          $positionId = $request->input('positionName');
          $workingTime = $request->input('workingTime');
@@ -35,7 +39,7 @@ class ReportController extends Controller
          $workingType = $request->input('workingType');
          $detail = $request->input('detail');
 
-         $report = new Report;
+         $report = new Report();
          $report->projectId = $projectId;
          $report->positionId = $positionId;
          $report->workingTime = $workingTime;
@@ -52,10 +56,12 @@ class ReportController extends Controller
         $positions = Position::all();
         $report = Report::find($id);
 
-        return view('content.employee.editReport',
-            compact('projects','userId','positions','report'));
+        return view(
+            'content.employee.editReport',
+            compact('projects','userId','positions','report')
+        );
     }
-    public function update($userId, Request $request, $id){
+    public function update($userId, editRequest $request, $id){
         $report = DB::table('reports')->where('id',$id)->first();
 
         $projectId = $request->input('projectName');
