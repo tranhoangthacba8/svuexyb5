@@ -1,0 +1,41 @@
+@extends('layouts/contentLayoutMaster')
+
+@section('title','edit project role')
+
+@section('content')
+    <div class="container">
+        <h2>Edit project role</h2>
+        <form action="{{route('managerProjectRole.update',$projectUser->id)}}" method="post">
+            @csrf
+            @method('put')
+            <div class="form-group" style="margin-bottom: 10px">
+                <label for="projectName">project name:</label>
+                <select name="project" id="projectName" class="form-select">
+                    @foreach($projects as $project)
+                        <option {{ $projectUser->projectId == $project->id ? 'selected' : '' }}  value="{{$project->id}}">{{$project->name}}</option>
+                    @endforeach>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 10px">
+                <label for="userName">user name:</label>
+                <select name="user" id="userName" class="form-select">
+                    @foreach($users as $user)
+                        <option {{ $projectUser->userId == $user->id ? 'selected' : '' }} value="{{$user->id}}">{{$user->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 10px">
+                <label for="positionName">position name:</label>
+                <select name="position" id="positionName" class="form-select">
+                    @foreach($positions as $position)
+                        <option {{ $projectUser->positionId == $position->id ? 'selected' : '' }} value="{{$position->id}}">{{$position->type}}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-success">Update</button>
+        </form>
+    </div>
+@endsection
