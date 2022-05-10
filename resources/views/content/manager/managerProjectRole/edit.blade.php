@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <h2>Edit project role</h2>
-        <form action="{{route('managerProjectRole.update',$projectUser->id)}}" method="post">
+        <form action="{{route('projectRole.update',$projectUser->id)}}" method="post">
             @csrf
             @method('put')
             <div class="form-group" style="margin-bottom: 10px">
@@ -15,6 +15,9 @@
                         <option {{ $projectUser->projectId == $project->id ? 'selected' : '' }}  value="{{$project->id}}">{{$project->name}}</option>
                     @endforeach>
                 </select>
+                @error('project')
+                <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
 
             <div class="form-group" style="margin-bottom: 10px">
@@ -24,6 +27,9 @@
                         <option {{ $projectUser->userId == $user->id ? 'selected' : '' }} value="{{$user->id}}">{{$user->name}}</option>
                     @endforeach
                 </select>
+                @error('user')
+                <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
 
             <div class="form-group" style="margin-bottom: 10px">
@@ -33,6 +39,9 @@
                         <option {{ $projectUser->positionId == $position->id ? 'selected' : '' }} value="{{$position->id}}">{{$position->type}}</option>
                     @endforeach
                 </select>
+                @error('position')
+                <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
 
             <button type="submit" class="btn btn-success">Update</button>

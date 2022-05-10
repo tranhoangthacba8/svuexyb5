@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <a href="{{route('managerUser.create')}}" class="btn btn-success" style="margin-bottom: 10px">create report</a>
+        <a href="{{route('user.create')}}" class="btn btn-success" style="margin-bottom: 10px">create user</a>
         <table class="table">
             <thead>
                  <tr>
@@ -23,8 +23,8 @@
                      <td>{{$user->tel}}</td>
                      <td>{{$user->address}}</td>
                      <td>
-                         <a href="{{route('managerUser.edit',$user->id)}}" class="btn btn-primary">Edit</a>
-                         <form class="frm-delete" action="{{route('managerUser.delete',$user->id)}}" method="post">
+                         <a href="{{route('user.edit',$user->id)}}" class="btn btn-primary">Edit</a>
+                         <form class="frm-delete" action="{{route('user.delete',$user->id)}}" method="post">
                              @csrf
                              @method('delete')
                              <button class="btn btn-danger btn-delete" type="button">delete</button>

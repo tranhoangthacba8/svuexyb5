@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <a href="{{route('managerProject.create')}}" class="btn btn-success" style="margin-bottom: 10px">create project</a>
+    <a href="{{route('project.create')}}" class="btn btn-success" style="margin-bottom: 10px">create project</a>
     <table class="table">
         <thead>
             <tr>
@@ -33,8 +33,8 @@
                      @endforeach
                  </td>
                  <td>
-                     <a href="{{route('managerProject.edit', $project->id)}}" class="btn btn-primary">Edit</a>
-                     <form class="frm-delete" action="{{route('managerProject.delete',$project->id)}}" method="post">
+                     <a href="{{route('project.edit', $project->id)}}" class="btn btn-primary">Edit</a>
+                     <form class="frm-delete" action="{{route('project.delete',$project->id)}}" method="post">
                          @csrf
                          @method('delete')
                          <button class="btn btn-danger btn-delete" type="button">delete</button>

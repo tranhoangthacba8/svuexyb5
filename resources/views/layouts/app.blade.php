@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    asset(mix('vendors/js/vendors.min.js'))
+
+
 </head>
 <body>
     <div id="app">
@@ -79,5 +82,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('myJs')
 </body>
 </html>

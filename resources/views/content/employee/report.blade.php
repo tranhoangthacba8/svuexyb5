@@ -4,7 +4,7 @@
 
 @section('content')
    <div class="container">
-         <a href="{{route('report.create',$userId)}}" class="btn btn-success" style="margin-bottom: 10px">create report</a>
+         <a href="{{route('report.create')}}" class="btn btn-success" style="margin-bottom: 10px">create report</a>
          <table class="table">
              <thead>
                 <tr>
@@ -27,11 +27,11 @@
                     <td>{{$report->workingType}}</td>
                     <td>{{$report->detail}}</td>
                     <td>
-                        <a href="editReport/{{$userId}}/{{$report->id}}" class="btn btn-primary" style="margin-bottom: 10px">Edit</a>
-                        <form class="frm-delete" action="{{route('report.delete',$report->id)}}" method="post">
+                        <a href="{{route('report.edit',$report->id)}}" class="btn btn-primary" style="margin-bottom: 10px">Edit</a>
+                        <form method="POST" action="{{route('report.delete',$report->id)}}">
+                            @method('DELETE')
                             @csrf
-                            @method('delete')
-                            <button class="btn btn-danger btn-delete" type="button">delete</button>
+                            <button class="btn btn-danger btn-delete" type="submit">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -39,14 +39,30 @@
              </tbody>
          </table>
    </div>
-   <script>
-       $(document).ready(function () {
-           $('.btn-delete').click(function () {
-               let isDelete = confirm('Do you want to delete this report?');
-               if (isDelete) {
-                   $(this).parents('form').submit();
-               }
-           });
-       })
-   </script>
+@section('page-script')
+    <script>
+        $(document).ready(function () {
+            const deleteRole = function (event) {
+                event.preventDefault();
+
+                Swal.fire({
+                    title: 'Bạn có muốn xóa Vai Trò này',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Không!',
+                    confirmButtonText: 'Có!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(this).parent('form').submit();
+                    }
+                });
+            }
+            // Delete Role
+            $(document).on('click','.btn-delete', deleteRole);
+            console.log($);
+        });
+    </script>
+@endsection
 @endsection
