@@ -24,8 +24,8 @@ class createRequest extends FormRequest
     public function rules()
     {
         return [
-            'projectName' => 'required',
-            'positionName' => 'required',
+            'projectId' => 'required',
+            'positionId' => 'required',
             'workingTime' => 'required|numeric',
             'date' => 'required',
             'workingType' => 'required',

@@ -23,7 +23,9 @@ class LoginController extends Controller
             $user = User::where('email', $username)->first();
             Auth::login($user);
 
-            return redirect()->route('home');
+            return redirect()->route('report.index');
+        }else{
+            return redirect()->route('login');
         }
     }
 

@@ -9,6 +9,9 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+
+        ];
     public function Reports(){
         return $this->hasMany(Report::class,'projectId','id');
     }

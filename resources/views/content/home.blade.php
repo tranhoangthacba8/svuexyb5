@@ -5,7 +5,7 @@
 @section('content')
 <!-- Kick start -->
 <div class="card">
-  <div class="card-header">
+    <div class="card-header">
     <h4 class="card-title">Kick start your next project 🚀</h4>
   </div>
   <div class="card-body">
