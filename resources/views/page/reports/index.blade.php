@@ -47,13 +47,13 @@
                     event.preventDefault();
 
                     Swal.fire({
-                        title: 'Bạn có muốn xóa Vai Trò này',
+                        title: 'Do you want delete this a report',
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        cancelButtonText: 'Không!',
-                        confirmButtonText: 'Có!'
+                        cancelButtonText: 'cancel!',
+                        confirmButtonText: 'yes!'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $(this).parent('form').submit();
