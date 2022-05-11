@@ -10,12 +10,19 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [
+        'name',
+        'detail',
+        'revenue',
+        'duration',
+    ];
 
-        ];
-    public function Reports(){
-        return $this->hasMany(Report::class,'projectId','id');
+    public function reports()
+    {
+        return $this->hasMany(Report::class, 'projectId', 'id');
     }
-    public function ProjectUsers(){
-        return $this->hasMany(ProjectUser::class,'projectId','id');
+
+    public function projectUsers()
+    {
+        return $this->hasMany(ProjectUser::class, 'projectId', 'id');
     }
 }

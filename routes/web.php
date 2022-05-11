@@ -8,7 +8,7 @@ use App\Http\Controllers\RegisterController;
 use \App\Http\Controllers\LogoutController;
 use \App\Http\Controllers\Backend\ReportController;
 use \App\Http\Controllers\Backend\UserController;
-use \App\Http\Controllers\Manager\ProjectController;
+use \App\Http\Controllers\Backend\ProjectController;
 use \App\Http\Controllers\Manager\ProjectRoleController;
 
 /*
@@ -65,13 +65,15 @@ Route::prefix('users')->group(function () {
     Route::delete('delete/{id}', [UserController::class, 'delete'])->name('users.delete');
 });
 
+Route::prefix('projects')->group(function () {
+    Route::get('/', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('create', [ProjectController::class, 'add'])->name('projects.create');
+    Route::post('store', [ProjectController::class, 'store'])->name('projects.store');
+    Route::get('edit/{id}', [ProjectController::class, 'edit'])->name('projects.edit');
+    Route::put('update/{id}', [ProjectController::class, 'update'])->name('projects.update');
+    Route::delete('delete/{id}', [ProjectController::class, 'delete'])->name('projects.delete');
+});
 
-Route::get('managerProject', [ProjectController::class, 'index'])->name('project.index');
-Route::get('createManagerProject', [ProjectController::class, 'add'])->name('project.create');
-Route::post('storeManagerProject', [ProjectController::class, 'store'])->name('project.store');
-Route::get('editManagerProject/{id}', [ProjectController::class, 'edit'])->name('project.edit');
-Route::put('updateManagerProject/{id}', [ProjectController::class, 'update'])->name('project.update');
-Route::delete('deleteManagerProject/{id}', [ProjectController::class, 'delete'])->name('project.delete');
 
 Route::get('projectRole', [ProjectRoleController::class, 'index'])->name('projectRole.index');
 Route::get('createProjectRole', [ProjectRoleController::class, 'add'])->name('projectRole.create');

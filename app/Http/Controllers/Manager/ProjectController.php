@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ManagerProject\createRequest;
-use App\Http\Requests\ManagerProject\editRequest;
+use App\Http\Requests\Project\createRequest;
+use App\Http\Requests\Project\editRequest;
 use App\Models\Project;
 use App\Models\ProjectUser;
 use App\Models\User;
