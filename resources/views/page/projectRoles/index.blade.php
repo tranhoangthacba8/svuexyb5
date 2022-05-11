@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <a href="{{route('projectRoles.create')}}" class="btn btn-success" style="margin-bottom: 10px">create</a>
+        <a href="{{route('project-roles.create')}}" class="btn btn-success" style="margin-bottom: 10px">create</a>
         <table class="table">
             <thead>
             <tr>
@@ -21,8 +21,8 @@
                     <td>{{$projectRole->project->name}}</td>
                     <td>{{$projectRole->position->type}}</td>
                     <td>
-                        <a href="{{route('projectRoles.edit',$projectRole->id)}}" class="btn btn-primary">Edit</a>
-                        <form class="frm-delete" action="{{route('projectRoles.delete',$projectRole->id)}}"
+                        <a href="{{route('project-roles.edit',$projectRole->id)}}" class="btn btn-primary">Edit</a>
+                        <form class="frm-delete" action="{{route('project-roles.delete',$projectRole->id)}}"
                               method="post">
                             @csrf
                             @method('delete')

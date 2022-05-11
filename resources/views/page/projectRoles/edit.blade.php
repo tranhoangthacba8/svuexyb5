@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <h2>Edit project role</h2>
-        <form action="{{route('projectRoles.update',$projectUser->id)}}" method="post">
+        <form action="{{route('project-roles.update',$projectUser->id)}}" method="post">
             @csrf
             @method('put')
             <div class="form-group" style="margin-bottom: 10px">

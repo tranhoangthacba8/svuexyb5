@@ -50,7 +50,7 @@ class ProjectRoleController extends Controller
         $projectRole->fill($request->all());
         $projectRole->save();
 
-        return redirect()->route('projectRoles.index');
+        return redirect()->route('project-roles.index');
     }
 
     public function edit($id)
@@ -78,7 +78,7 @@ class ProjectRoleController extends Controller
         $projectUser->fill($request->all());
         $projectUser->save();
 
-        return redirect()->route('projectRoles.index');
+        return redirect()->route('project-roles.index');
     }
 
     public function delete($id)
@@ -86,6 +86,6 @@ class ProjectRoleController extends Controller
         $projectUser = ProjectUser::find($id);
         $projectUser->delete($id);
 
-        return redirect()->route('projectRoles.index');
+        return redirect()->route('project-roles.index');
     }
 }

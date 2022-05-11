@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <h2>Create project role</h2>
-        <form action="{{route('projectRoles.store')}}" method="post">
+        <form action="{{route('project-roles.store')}}" method="post">
             @csrf
             <div class="form-group" style="margin-bottom: 10px">
                 <label for="projectId">project name:</label>
