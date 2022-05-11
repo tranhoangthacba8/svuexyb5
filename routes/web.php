@@ -7,7 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use \App\Http\Controllers\LogoutController;
 use \App\Http\Controllers\Backend\ReportController;
-use \App\Http\Controllers\Manager\UserController;
+use \App\Http\Controllers\Backend\UserController;
 use \App\Http\Controllers\Manager\ProjectController;
 use \App\Http\Controllers\Manager\ProjectRoleController;
 
@@ -56,12 +56,15 @@ Route::get('editReport/{id}', [ReportController::class, 'edit'])->name('report.e
 Route::put('updateReport/{id}', [ReportController::class, 'update'])->name('report.update');
 Route::delete('deleteReport/{id}', [ReportController::class, 'delete'])->name('report.delete');
 
-Route::get('managerUser', [UserController::class, 'index'])->name('user.index');
-Route::get('CreateManagerUser', [UserController::class, 'add'])->name('user.create');
-Route::post('storeManagerUser', [UserController::class, 'store'])->name('user.store');
-Route::get('editManagerUser/{id}', [UserController::class, 'edit'])->name('user.edit');
-Route::put('updateManagerUser/{id}', [UserController::class, 'update'])->name('user.update');
-Route::get('deleteManagerUser/{id}', [UserController::class, 'delete'])->name('user.delete');
+Route::prefix('users')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('users.index');
+    Route::get('create', [UserController::class, 'add'])->name('users.create');
+    Route::post('store', [UserController::class, 'store'])->name('users.store');
+    Route::get('edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('update/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('delete/{id}', [UserController::class, 'delete'])->name('users.delete');
+});
+
 
 Route::get('managerProject', [ProjectController::class, 'index'])->name('project.index');
 Route::get('createManagerProject', [ProjectController::class, 'add'])->name('project.create');
