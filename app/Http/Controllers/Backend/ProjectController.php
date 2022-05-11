@@ -15,15 +15,14 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = DB::table('projects')
-            ->select('projects.*')
-            ->get();
+        $projects = Project::all();
         $projectUsers = ProjectUser::all();
 
         return view
         (
-            'page.projects.index'
-            , compact(
+            'page.projects.index',
+            compact
+            (
                 'projects',
                 'projectUsers'
             )
