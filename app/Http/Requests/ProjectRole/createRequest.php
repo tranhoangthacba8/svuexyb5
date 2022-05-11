@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\ManagerProjectRole;
+namespace App\Http\Requests\ProjectRole;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class editRequest extends FormRequest
+class createRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class editRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class editRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'projectId' => 'required|numeric',
+            'userId' => 'required|numeric',
+            'positionId' => 'required|numeric'
         ];
     }
 }
