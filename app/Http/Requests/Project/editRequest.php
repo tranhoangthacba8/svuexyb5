@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\ManagerProject;
+namespace App\Http\Requests\Project;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -28,7 +28,6 @@ class editRequest extends FormRequest
             'detail' => 'required',
             'duration' => 'required|numeric',
             'revenue' => 'required|numeric',
-            'listMember' => 'required'
         ];
     }
 }
