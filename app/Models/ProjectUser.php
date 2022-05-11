@@ -9,13 +9,24 @@ class ProjectUser extends Model
 {
     use HasFactory;
 
-    public function project(){
-        return $this->belongsTo(Project::class,'projectId','id');
+    protected $fillable = [
+        'userId',
+        'projectId',
+        'positionId',
+    ];
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'projectId', 'id');
     }
-    public function user(){
-        return $this->belongsTo(User::class,'userId','id');
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userId', 'id');
     }
-    public function position(){
-       return $this->belongsTo(Position::class,'positionId','id');
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'positionId', 'id');
     }
 }

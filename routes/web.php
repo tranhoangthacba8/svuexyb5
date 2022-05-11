@@ -9,7 +9,7 @@ use \App\Http\Controllers\LogoutController;
 use \App\Http\Controllers\Backend\ReportController;
 use \App\Http\Controllers\Backend\UserController;
 use \App\Http\Controllers\Backend\ProjectController;
-use \App\Http\Controllers\Manager\ProjectRoleController;
+use \App\Http\Controllers\Backend\ProjectRoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,10 +74,12 @@ Route::prefix('projects')->group(function () {
     Route::delete('delete/{id}', [ProjectController::class, 'delete'])->name('projects.delete');
 });
 
+Route::prefix('project-roles')->group(function () {
+    Route::get('/', [ProjectRoleController::class, 'index'])->name('project-roles.index');
+    Route::get('create', [ProjectRoleController::class, 'add'])->name('project-roles.create');
+    Route::post('store', [ProjectRoleController::class, 'store'])->name('project-roles.store');
+    Route::get('edit/{id}', [ProjectRoleController::class, 'edit'])->name('project-roles.edit');
+    Route::put('update/{id}', [ProjectRoleController::class, 'update'])->name('project-roles.update');
+    Route::delete('delete/{id}', [ProjectRoleController::class, 'delete'])->name('project-roles.delete');
+});
 
-Route::get('projectRole', [ProjectRoleController::class, 'index'])->name('projectRole.index');
-Route::get('createProjectRole', [ProjectRoleController::class, 'add'])->name('projectRole.create');
-Route::post('storeProjectRole', [ProjectRoleController::class, 'store'])->name('projectRole.store');
-Route::get('editProjectRole/{id}', [ProjectRoleController::class, 'edit'])->name('projectRole.edit');
-Route::put('updateProjectRole/{id}', [ProjectRoleController::class, 'update'])->name('projectRole.update');
-Route::delete('deleteProjectRole/{id}', [ProjectRoleController::class, 'delete'])->name('projectRole.delete');
