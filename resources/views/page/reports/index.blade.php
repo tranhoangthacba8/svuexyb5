@@ -47,7 +47,7 @@
                     event.preventDefault();
 
                     Swal.fire({
-                        title: 'Do you want delete this report',
+                        title: 'Do you want delete this a report',
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
