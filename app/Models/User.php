@@ -24,6 +24,7 @@ class User extends Authenticatable
         'birthday',
         'tel',
         'address',
+        'roleId',
     ];
 
     /**
@@ -44,13 +45,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function Role(){
+    public function role(){
         return $this->belongsTo(Role::class,'roleId','id');
     }
-    public function Reports(){
+    public function reports(){
         return $this->hasMany(Report::class,'userId','id');
     }
-    public function ProjectUsers(){
+    public function projectUsers(){
         return $this->hasMany(ProjectUser::class,'userId','id');
     }
 }

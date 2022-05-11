@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\ManagerUser;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -29,7 +29,7 @@ class editRequest extends FormRequest
             'password' => 'required|min:8',
             'gender' => 'required|numeric',
             'birthday' => 'required',
-            'role' => 'required|numeric'
+            'roleId' => 'required|numeric'
         ];
     }
 }
