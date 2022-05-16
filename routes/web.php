@@ -82,4 +82,4 @@ Route::prefix('project-roles')->group(function () {
     Route::put('update/{id}', [ProjectRoleController::class, 'update'])->name('project-roles.update');
     Route::delete('delete/{id}', [ProjectRoleController::class, 'delete'])->name('project-roles.delete');
 });
-
+Route::get('demoChart',[\App\Http\Controllers\Backend\StaticReportController::class,'staticByMonth']);
