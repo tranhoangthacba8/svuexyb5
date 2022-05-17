@@ -10,6 +10,7 @@ use \App\Http\Controllers\Backend\ReportController;
 use \App\Http\Controllers\Backend\UserController;
 use \App\Http\Controllers\Backend\ProjectController;
 use \App\Http\Controllers\Backend\ProjectRoleController;
+use \App\Http\Controllers\Backend\StaticReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,4 +83,5 @@ Route::prefix('project-roles')->group(function () {
     Route::put('update/{id}', [ProjectRoleController::class, 'update'])->name('project-roles.update');
     Route::delete('delete/{id}', [ProjectRoleController::class, 'delete'])->name('project-roles.delete');
 });
-Route::get('demoChart',[\App\Http\Controllers\Backend\StaticReportController::class,'staticByMonth']);
+Route::get('static-employee-month',[StaticReportController::class,'staticByMonth']);
+Route::get('static-employee-project',[StaticReportController::class,'staticByProject']);

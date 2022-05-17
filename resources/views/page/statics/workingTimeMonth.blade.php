@@ -3,6 +3,7 @@
 @section('title','static working time by month')
 
 @section('content')
+
     <div style="height: 400px;width: 900px;margin: auto;">
         <canvas id="barChart"></canvas>
     </div>
@@ -14,10 +15,10 @@
             var barChart = new Chart(barCanvas,{
                 type:'bar',
                 data:{
-                    labels:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    labels:['offSite','Remote','onSite','off'],
                     datasets:[
                         {
-                            lablel:'static working time on month by employee, 2022',
+                            label:'static working time on month by employee, 2022',
                             data:datas,
                             backgroundColor:['red','orange','yellow','green','blue','indigo','violet','purple','pink','silver','gold','brown'],
                         }
