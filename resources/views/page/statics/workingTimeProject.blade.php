@@ -3,6 +3,7 @@
 @section('title','static working time by project')
 
 @section('content')
+
     <div style="height: 400px;width: 900px;margin: auto;">
         <canvas id="barChart"></canvas>
     </div>

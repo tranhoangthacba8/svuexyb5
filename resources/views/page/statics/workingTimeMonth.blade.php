@@ -4,6 +4,16 @@
 
 @section('content')
 
+    <div class="container" style="margin-bottom: 30px">
+        <form class="form-inline my-2 my-lg-0">
+            <label>From:</label>
+            <input name="fromDate" type="date">
+            <label>To:</label>
+            <input name="toDate" type="date">
+            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">search</button>
+        </form>
+    </div>
+
     <div style="height: 400px;width: 900px;margin: auto;">
         <canvas id="barChart"></canvas>
     </div>

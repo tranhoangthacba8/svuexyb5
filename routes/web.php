@@ -85,3 +85,4 @@ Route::prefix('project-roles')->group(function () {
 });
 Route::get('static-employee-month',[StaticReportController::class,'staticByMonth']);
 Route::get('static-employee-project',[StaticReportController::class,'staticByProject']);
+
