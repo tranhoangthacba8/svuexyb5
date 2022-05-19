@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\DB;
 
 class StaticMangerController extends Controller
 {
-    public function sumByRole(){
+    public function sumByRole()
+    {
         $totalTime = DB::table('reports')
             ->selectRaw('sum(workingTime) as sumWork')
             ->whereYear('date', date('Y'))
@@ -18,14 +19,36 @@ class StaticMangerController extends Controller
             ->pluck('sumWork');
 
         $positions = Position::all();
+
+        return view
+        (
+            'page.statics.totalTimeByRole',
+            compact
+            (
+                'totalTime',
+                'positions'
+            )
+        );
     }
-    public function sumTimeByMember(){
+
+    public function sumTimeByMember()
+    {
         $totalTime = DB::table('reports')
-                     ->selectRaw('sum(workingTime) as sumWork')
-                     ->whereYear('date', date('Y'))
-                     ->groupBy(DB::raw('userId'))
-                     ->pluck('sumWork');
+            ->selectRaw('sum(workingTime) as sumWork')
+            ->whereYear('date', date('Y'))
+            ->groupBy(DB::raw('userId'))
+            ->pluck('sumWork');
 
         $users = User::all();
+
+        return view
+        (
+            'page.statics.totalTimeByMember',
+            compact
+            (
+                'totalTime',
+                'users'
+            )
+        );
     }
 }
