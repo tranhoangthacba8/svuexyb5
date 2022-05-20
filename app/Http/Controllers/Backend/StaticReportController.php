@@ -15,15 +15,15 @@ class StaticReportController extends Controller
         $fromDate = $request->input('fromDate');
         $toDate = $request->input('toDate');
 
-        if($fromDate && $toDate){
+        if ($fromDate && $toDate) {
             $workingTimes = DB::table('reports')
                 ->selectRaw('sum(workingTime) as sumWork')
                 ->whereYear('date', date('Y'))
-                ->where('date','>=',$fromDate)
-                ->where('date','<=', $toDate)
+                ->where('date', '>=', $fromDate)
+                ->where('date', '<=', $toDate)
                 ->groupBy(DB::raw("workingType"))
                 ->pluck('sumWork');
-        }else{
+        } else {
             $workingTimes = DB::table('reports')
                 ->selectRaw('sum(workingTime) as sumWork')
                 ->whereYear('date', date('Y'))

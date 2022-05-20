@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class StaticMangerController extends Controller
 {
-    public function sumByRole()
+    public function totalByRole()
     {
         $totalTime = DB::table('reports')
             ->selectRaw('sum(workingTime) as sumWork')
@@ -31,7 +31,7 @@ class StaticMangerController extends Controller
         );
     }
 
-    public function sumTimeByMember()
+    public function totalTimeByMember()
     {
         $totalTime = DB::table('reports')
             ->selectRaw('sum(workingTime) as sumWork')

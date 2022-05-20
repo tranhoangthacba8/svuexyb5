@@ -87,7 +87,7 @@ Route::prefix('project-roles')->group(function () {
 Route::prefix('static')->group(function (){
     Route::get('employee-month',[StaticReportController::class,'staticByMonth'])->name('static-employee.month');
     Route::get('employee-project',[StaticReportController::class,'staticByProject'])->name('static-employee.project');
-    Route::get('manager-role',[StaticMangerController::class,'sumByRole'])->name('static-manager.role');
-    Route::get('manager-member',[StaticMangerController::class,'sumTimeByMember'])->name('static-manager.member');
+    Route::get('manager-role',[StaticMangerController::class,'totalByRole'])->name('static-manager.role');
+    Route::get('manager-member',[StaticMangerController::class,'totalTimeByMember'])->name('static-manager.member');
 });
 
