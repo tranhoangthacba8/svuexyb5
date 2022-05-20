@@ -1,49 +1,115 @@
 {
-  "menu": [
-    {
-      "url": "home",
-      "name": "Home",
-      "icon": "home",
-      "slug": "home"
-    },
-    {
-      "name": "Page Layouts",
-      "icon": "mail",
-      "slug": "",
-      "badge": "5",
-      "badgeClass": "badge rounded-pill badge-light-danger ms-auto me-1",
-      "submenu": [
+    "menu": [
         {
-          "url": "layouts/collapsed-menu",
-          "name": "Collapsed Menu",
-          "icon": "circle",
-          "slug": "collapsed-menu"
+            "url": "home",
+            "name": "Home",
+            "icon": "home",
+            "slug": "home"
         },
         {
-          "url": "layouts/full",
-          "name": "Layout Full",
-          "icon": "circle",
-          "slug": "layout-full"
+            "url": "report",
+            "name": "reporting",
+            "icon": "user",
+            "slug": "report"
         },
         {
-          "url": "layouts/without-menu",
-          "name": "Without Menu",
-          "icon": "circle",
-          "slug": "without-menu"
+            "name": "Manager",
+            "icon": "",
+            "slug": "",
+            "badge": "3",
+            "bageClass": "badge rounded-pill badge-light-danger ms-auto me-1",
+            "submenu": [
+                {
+                    "url": "users",
+                    "name": "Manager user",
+                    "icon": "circle",
+                    "slug": "users"
+                },
+                {
+                    "url": "projects",
+                    "name": "Manager project",
+                    "icon": "circle",
+                    "slug": "projects"
+                },
+                {
+                    "url": "project-roles",
+                    "name": "Manager project role",
+                    "icon": "circle",
+                    "slug": "project roles"
+                }
+            ]
         },
         {
-          "url": "layouts/empty",
-          "name": "Layout Empty",
-          "icon": "circle",
-          "slug": "layout-empty"
+            "name": "Static",
+            "icon": "",
+            "slug": "",
+            "badge": "4",
+            "badgeClass": "badge rounded-pill badge-light-danger ms-auto me-1",
+            "submenu": [
+                {
+                    "url": "static/employee-month",
+                    "name": "Static employee month",
+                    "icon": "circle",
+                    "slug": "employee-month"
+                },
+                {
+                    "url": "static/employee-project",
+                    "name": "Static employee project",
+                    "icon": "circle",
+                    "slug": "employee-project"
+                },
+                {
+                    "url": "static/manager-role",
+                    "name": "Static manager role",
+                    "icon": "circle",
+                    "slug": "manager-role"
+                },
+                {
+                    "url": "static/manager-member",
+                    "name": "Static manager member",
+                    "icon": "circle",
+                    "slug": "manager-member"
+                }
+            ]
         },
         {
-          "url": "layouts/blank",
-          "name": "Layout Blank",
-          "icon": "circle",
-          "slug": "layout-blank"
+            "name": "Page layouts",
+            "icon": "mail",
+            "slug": "",
+            "badge": "5",
+            "badgeClass": "badge rounded-pill badge-light-danger ms-auto me-1",
+            "submenu": [
+                {
+                    "url": "layouts/collapsed-menu",
+                    "name": "Collapsed Menu",
+                    "icon": "circle",
+                    "slug": "collapsed-menu"
+                },
+                {
+                    "url": "layouts/full",
+                    "name": "Layout Full",
+                    "icon": "circle",
+                    "slug": "layout-full"
+                },
+                {
+                    "url": "layouts/without-menu",
+                    "name": "Without Menu",
+                    "icon": "circle",
+                    "slug": "without-menu"
+                },
+                {
+                    "url": "layouts/empty",
+                    "name": "Layout Empty",
+                    "icon": "circle",
+                    "slug": "layout-empty"
+                },
+                {
+                    "url": "layouts/blank",
+                    "name": "Layout Blank",
+                    "icon": "circle",
+                    "slug": "layout-blank"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
