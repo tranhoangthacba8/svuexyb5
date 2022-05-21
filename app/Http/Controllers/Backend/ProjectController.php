@@ -10,11 +10,16 @@ use App\Models\ProjectUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class ProjectController extends Controller
 {
     public function index()
     {
+        if(Gate::denies('project.manager')){
+            abort(403);
+        }
+
         $projects = Project::all();
         $projectUsers = ProjectUser::all();
 
@@ -31,6 +36,10 @@ class ProjectController extends Controller
 
     public function add()
     {
+        if(Gate::denies('project.manager')){
+            abort(403);
+        }
+
         $users = User::all();
 
         return view(
@@ -43,6 +52,10 @@ class ProjectController extends Controller
 
     public function store(createRequest $request)
     {
+        if(Gate::denies('project.manager')){
+            abort(403);
+        }
+
         $project = new Project();
         $project->fill($request->all());
         $project->save();
@@ -52,6 +65,10 @@ class ProjectController extends Controller
 
     public function edit($id)
     {
+        if(Gate::denies('project.manager')){
+            abort(403);
+        }
+
         $users = User::all();
         $project = Project::find($id);
 
@@ -67,6 +84,10 @@ class ProjectController extends Controller
 
     public function update($id, editRequest $request)
     {
+        if(Gate::denies('project.manager')){
+            abort(403);
+        }
+
         $project = Project::find($id);
         $project->fill($request->all());
         $project->save();
@@ -76,6 +97,10 @@ class ProjectController extends Controller
 
     public function delete($id)
     {
+        if(Gate::denies('project.manager')){
+            abort(403);
+        }
+
         $project = Project::find($id);
         $project->delete();
         $projectUsers = ProjectUser::all();

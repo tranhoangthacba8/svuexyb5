@@ -9,11 +9,16 @@ use App\Models\ProjectUser;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
     public function index()
     {
+        if(Gate::denies('user.manager')){
+            abort(403);
+        }
+
         $users = User::all();
 
         return view(
@@ -24,6 +29,10 @@ class UserController extends Controller
 
     public function add()
     {
+        if(Gate::denies('user.manager')){
+            abort(403);
+        }
+
         $roles = Role::all();
 
         return view(
@@ -36,7 +45,9 @@ class UserController extends Controller
 
     public function store(createRequest $request)
     {
-
+        if(Gate::denies('user.manager')){
+            abort(403);
+        }
 
         $user = new User();
         $user->fill($request->all());
@@ -47,6 +58,10 @@ class UserController extends Controller
 
     public function edit($id)
     {
+        if(Gate::denies('user.manager')){
+            abort(403);
+        }
+
         $user = User::find($id);
         $roles = Role::all();
 
@@ -61,6 +76,10 @@ class UserController extends Controller
 
     public function update($id, editRequest $request)
     {
+        if(Gate::denies('user.manager')){
+            abort(403);
+        }
+
         $user = User::find($id);
 
         $user->fill($request->all());
@@ -71,6 +90,10 @@ class UserController extends Controller
 
     public function delete($id)
     {
+        if(Gate::denies('user.manager')){
+            abort(403);
+        }
+
         $user = User::find($id);
         $user->delete();
         $projectUsers = ProjectUser::all();

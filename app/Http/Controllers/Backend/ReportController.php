@@ -10,11 +10,16 @@ use App\Models\Project;
 use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ReportController extends Controller
 {
     public function getReportAll()
     {
+        if(Gate::denies('report.manager')){
+            abort(403);
+        }
+
         $userId = Auth::id();
         $reports = Report::where('userId', $userId)
             ->get();
@@ -31,6 +36,10 @@ class ReportController extends Controller
 
     public function add()
     {
+        if(Gate::denies('report.manager')){
+            abort(403);
+        }
+
         $projects = Project::all();
         $positions = Position::all();
         $reports = Report::all();
@@ -58,6 +67,10 @@ class ReportController extends Controller
 
     public function edit($id)
     {
+        if(Gate::denies('report.manager')){
+            abort(403);
+        }
+
         $projects = Project::all();
         $positions = Position::all();
         $report = Report::find($id);
@@ -75,6 +88,10 @@ class ReportController extends Controller
 
     public function update(editRequest $request, $id)
     {
+        if(Gate::denies('report.manager')){
+            abort(403);
+        }
+
         $report = Report::find($id);
         $report->fill($request->all());
         $report->userId = Auth::id();
@@ -85,6 +102,14 @@ class ReportController extends Controller
 
     public function delete($id)
     {
+        if(Gate::denies('report.manager')){
+            abort(403);
+        }
+
+        if(Gate::denies('report.manager')){
+            abort(403);
+        }
+
         $report = Report::find($id);
         $report->delete();
 

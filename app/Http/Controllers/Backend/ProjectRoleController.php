@@ -10,11 +10,16 @@ use App\Models\Project;
 use App\Models\ProjectUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ProjectRoleController extends Controller
 {
     public function index()
     {
+        if(Gate::denies('project-role.manager')){
+            abort(403);
+        }
+
         $projectRoles = ProjectUser::all();
 
         return view
@@ -29,6 +34,10 @@ class ProjectRoleController extends Controller
 
     public function add()
     {
+        if(Gate::denies('project-role.manager')){
+            abort(403);
+        }
+
         $projects = Project::all();
         $users = User::all();
         $positions = Position::all();
@@ -46,6 +55,10 @@ class ProjectRoleController extends Controller
 
     public function store(createRequest $request)
     {
+        if(Gate::denies('project-role.manager')){
+            abort(403);
+        }
+
         $projectRole = new ProjectUser();
         $projectRole->fill($request->all());
         $projectRole->save();
@@ -55,6 +68,10 @@ class ProjectRoleController extends Controller
 
     public function edit($id)
     {
+        if(Gate::denies('project-role.manager')){
+            abort(403);
+        }
+
         $projects = Project::all();
         $users = User::all();
         $positions = Position::all();
@@ -74,6 +91,10 @@ class ProjectRoleController extends Controller
 
     public function update($id, editRequest $request)
     {
+        if(Gate::denies('project-role.manager')){
+            abort(403);
+        }
+
         $projectUser = ProjectUser::find($id);
         $projectUser->fill($request->all());
         $projectUser->save();
@@ -83,6 +104,10 @@ class ProjectRoleController extends Controller
 
     public function delete($id)
     {
+        if(Gate::denies('project-role.manager')){
+            abort(403);
+        }
+
         $projectUser = ProjectUser::find($id);
         $projectUser->delete($id);
 
