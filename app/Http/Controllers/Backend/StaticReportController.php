@@ -7,11 +7,16 @@ use App\Models\Project;
 use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class StaticReportController extends Controller
 {
     public function staticByMonth(Request $request)
     {
+        if(Gate::denies('view-statistic-employee')){
+            abort(403);
+        }
+
         $fromDate = $request->input('fromDate');
         $toDate = $request->input('toDate');
 
@@ -43,6 +48,10 @@ class StaticReportController extends Controller
 
     public function staticByProject()
     {
+        if(Gate::denies('view-statistic-employee')){
+            abort(403);
+        }
+
         $workingTimes = DB::table('reports')
             ->select(DB::raw('sum(workingTime) as sumWork'))
             ->groupBy(DB::raw("projectId"))
